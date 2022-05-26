@@ -9,3 +9,8 @@ export async function getProductsById(productId) {
   const product = await productsRepository.findProductById(parseInt(productId))
   return product
 }
+
+export async function getProductsByType(type: string) {
+  const product = await productsRepository.findProductByType(type)
+  return product
+}

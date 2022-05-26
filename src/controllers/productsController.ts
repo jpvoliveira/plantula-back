@@ -11,3 +11,9 @@ export async function findProductsById(req:Request, res:Response ) {
   const product = await productsService.getProductsById(productId)
   res.send(product)
 }
+
+export async function findProductsByType(req:Request, res:Response ) {
+  const type = req.params.type
+  const products = await productsService.getProductsByType(type)
+  res.send(products)
+}

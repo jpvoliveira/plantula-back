@@ -14,3 +14,13 @@ export async function findProductById(productId: number){
   
   return result
 }
+
+export async function findProductByType(type: string){
+  const result = await prisma.products.findMany({
+    where:{
+      type: type
+    }
+  })
+  
+  return result
+}
