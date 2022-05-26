@@ -16,7 +16,6 @@ export async function findProductById(productId: number){
 }
 
 export async function findProductByType(type: string){
-  console.log(type)
   const result = await prisma.products.findMany({
     where:{
       type: type
