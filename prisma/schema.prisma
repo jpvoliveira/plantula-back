@@ -10,7 +10,7 @@ datasource db {
 model products {
   id          Int      @id @default(autoincrement())
   name        String   @unique
-  type        String   
+  type        String
   price       String
   stock       Int
   image       String
@@ -39,14 +39,14 @@ model users {
 }
 
 model orders {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   userId    Int
   productId Int
   amount    String
   value     String
-  signal    Boolean  @default(false)
-  date      DateTime @default(now()) @db.Date
-  concluded Boolean  @default(false)
-  products  products @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  users     users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  signal    Boolean   @default(false)
+  date      DateTime? @default(now()) @db.Date
+  concluded Boolean   @default(false)
+  products  products  @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users     users     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
