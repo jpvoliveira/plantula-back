@@ -42,8 +42,8 @@ model orders {
   id        Int       @id @default(autoincrement())
   userId    Int
   productId Int
-  amount    String
-  value     String
+  amount    Int
+  value     Int
   signal    Boolean   @default(false)
   date      DateTime? @default(now()) @db.Date
   concluded Boolean   @default(false)

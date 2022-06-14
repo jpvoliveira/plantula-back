@@ -1,15 +1,16 @@
-import {prisma} from "../database.js"
+import { prisma } from "../database.js"
 
 export interface Order {
   userId: number;
   productId: number;
-  amount: string;
-  value: string;
+  amount: number;
+  value: number;
 }
 
-export async function postOrder(orderData: Order){
+export async function postOrder(orderData: Order) {
+  console.log(orderData)
   const result = await prisma.orders.create({
-    data:{
+    data: {
       userId: orderData.userId,
       productId: orderData.productId,
       amount: orderData.amount,
