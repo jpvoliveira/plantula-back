@@ -7,6 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model orders {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  productId Int
+  amount    Int
+  value     Int
+  signal    Boolean   @default(false)
+  date      DateTime? @default(now()) @db.Date
+  concluded Boolean   @default(false)
+  products  products  @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users     users     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
 model products {
   id          Int      @id @default(autoincrement())
   name        String   @unique
@@ -36,17 +49,4 @@ model users {
   address  String
   orders   orders[]
   sessions sessions[]
-}
-
-model orders {
-  id        Int       @id @default(autoincrement())
-  userId    Int
-  productId Int
-  amount    Int
-  value     Int
-  signal    Boolean   @default(false)
-  date      DateTime? @default(now()) @db.Date
-  concluded Boolean   @default(false)
-  products  products  @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  users     users     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

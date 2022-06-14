@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+	  "start": "npx prisma migrate deploy && node dist/server.js"
   },
   "keywords": [],
   "author": "",
