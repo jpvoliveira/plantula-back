@@ -8,7 +8,6 @@ export interface Order {
 }
 
 export async function postOrder(orderData: Order) {
-  console.log(orderData)
   const result = await prisma.orders.create({
     data: {
       userId: orderData.userId,
